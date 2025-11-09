@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.cursor/
+.cursorrules
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+*.log
+test-results-*.xml
+coverage.xml
+testing_results/
+test_repos/
+test_codebases/
+
+# Migration tool artifacts
+pattern-cache.yaml
+*.report.json
+migration-results.json
+*.summary.md
+
+# Documentation (exclude all .md files except README.md)
+*.md
+!README.md
+
+# OS
+.DS_Store
+Thumbs.db
