@@ -1,0 +1,85 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "migratex"
+version = "0.0.1"
+description = "Semi-automated migration assistant for migrating Semantic Kernel and AutoGen code to Microsoft Agent Framework"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "click>=8.0.0",
+    "pyyaml>=6.0",
+    "libcst>=1.1.0",
+    "diff-match-patch>=20230430",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.11.1",
+    "pytest-timeout>=2.1.0",
+    "pytest-xdist>=3.3.0",
+    "hypothesis>=6.82.0",
+    "faker>=19.0.0",
+    "coverage>=7.3.0",
+]
+
+[project.scripts]
+migrate = "migratex.cli.main:cli"
+
+[tool.setuptools]
+packages = ["migratex"]
+
+[tool.setuptools.package-data]
+migratex = ["patterns/**/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=migratex",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-report=xml",
+    "--cov-fail-under=90",
+    "-v",
+    "-n", "auto",  # Enable pytest-xdist parallel execution
+]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "e2e: End-to-end tests",
+    "edge_case: Edge case tests",
+    "outlier: Outlier scenario tests",
+    "performance: Performance tests",
+    "slow: Slow running tests",
+    "real_world: Real-world validation tests using actual repositories",
+]
+
+[tool.coverage.run]
+source = ["migratex"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/migrations/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "@abstractmethod",
+]
+

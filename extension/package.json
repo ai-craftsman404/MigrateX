@@ -1,0 +1,80 @@
+{
+  "name": "migratex",
+  "displayName": "MigrateX - SK/AutoGen to MAF Migration Tool",
+  "description": "Semi-automated migration assistant for migrating Semantic Kernel and AutoGen code to Microsoft Agent Framework",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "migratex.start",
+        "title": "Start Migration"
+      },
+      {
+        "command": "migratex.analyze",
+        "title": "Analyse Codebase"
+      },
+      {
+        "command": "migratex.refactor",
+        "title": "Refactor File"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "migratexFiles",
+          "name": "Migration Files",
+          "when": "migratex.sessionActive"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "migratex",
+          "title": "MigrateX",
+          "icon": "resources/migratex-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "migratex": [
+        {
+          "id": "migratexChat",
+          "name": "Migration Chat",
+          "type": "webview"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "ts-morph": "^21.0.1",
+    "diff": "^5.1.0"
+  }
+}
+

@@ -53,9 +53,11 @@ pattern-cache.yaml
 migration-results.json
 *.summary.md
 
-# Documentation (exclude all .md files except README.md)
+# Documentation (exclude all .md files except root README.md)
 *.md
 !README.md
+# Exclude all README.md files in subdirectories (agent-specific/internal docs)
+**/*/README.md
 
 # OS
 .DS_Store
