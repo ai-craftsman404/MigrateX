@@ -79,7 +79,7 @@ class TestGitPerformance:
     
     def test_perf_git_workflow_memory(self, large_git_repo):
         """Test memory usage during git operations."""
-        import psutil
+        psutil = pytest.importorskip("psutil")
         import os
         
         process = psutil.Process(os.getpid())

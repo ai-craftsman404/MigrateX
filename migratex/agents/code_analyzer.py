@@ -129,6 +129,9 @@ class CodeAnalyzerAgent(BaseAgent):
     
     def _find_python_files(self) -> list[Path]:
         """Find all Python files in the project."""
+        if not self.context.project_path.exists() or not self.context.project_path.is_dir():
+            raise FileNotFoundError(f"Project path does not exist or is not a directory: {self.context.project_path}")
+
         python_files = []
         for path in self.context.project_path.rglob("*.py"):
             # Skip common directories

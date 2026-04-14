@@ -234,7 +234,10 @@ class TestFileOperations:
     
     def test_directory_not_found_error_handling(self):
         """Test handling of directory not found errors."""
-        non_existent = Path("/nonexistent/directory/path")
+        # Use a guaranteed-nonexistent path (portable across OSes and environments).
+        parent = Path(tempfile.mkdtemp())
+        non_existent = parent / "definitely-does-not-exist"
+        shutil.rmtree(parent)
         
         # Should handle gracefully
         assert not non_existent.exists()

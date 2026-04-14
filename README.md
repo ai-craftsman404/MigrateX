@@ -1,5 +1,7 @@
 # MigrateX - Migration Tool for SK/AutoGen to MAF
 
+[![MigrateX CI](https://github.com/ai-craftsman404/MigrateX/actions/workflows/migratex-ci.yml/badge.svg)](https://github.com/ai-craftsman404/MigrateX/actions/workflows/migratex-ci.yml)
+
 A semi-automated migration assistant that scans, analyses, and refactors code from Semantic Kernel and AutoGen frameworks to Microsoft Agent Framework.
 
 ## Installation

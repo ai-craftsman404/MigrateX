@@ -251,7 +251,10 @@ class TestInputValidationEdgeCases:
     
     def test_nonexistent_directory(self):
         """Test nonexistent directory."""
-        nonexistent = Path("/nonexistent/directory/path")
+        # Use a guaranteed-nonexistent path (portable across OSes and environments).
+        parent = Path(tempfile.mkdtemp())
+        nonexistent = parent / "definitely-does-not-exist"
+        shutil.rmtree(parent)
         
         context = MigrationContext(project_path=nonexistent, mode="analyze")
         analyzer = CodeAnalyzerAgent(context)
