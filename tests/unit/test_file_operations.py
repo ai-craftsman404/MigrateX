@@ -9,6 +9,7 @@ import pytest
 from pathlib import Path
 import tempfile
 import shutil
+import sys
 from migratex.utils.file_ops import copy_project_structure
 from migratex.testing.edge_case_fixtures import EdgeCaseTestFixtures
 
@@ -149,6 +150,9 @@ class TestFileOperations:
     
     def test_path_handling_windows_style(self):
         """Test handling of Windows-style paths."""
+        if sys.platform != "win32":
+            pytest.skip("Windows-style path handling test is only applicable on Windows.")
+
         fixture = EdgeCaseTestFixtures.create_single_file_codebase("import os")
         try:
             file_path = fixture / "main.py"
