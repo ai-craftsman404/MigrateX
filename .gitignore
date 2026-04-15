@@ -62,3 +62,6 @@ migration-results.json
 # OS
 .DS_Store
 Thumbs.db
+
+/.venv-ci/
+

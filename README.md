@@ -2,6 +2,10 @@
 
 [![MigrateX CI](https://github.com/ai-craftsman404/MigrateX/actions/workflows/migratex-ci.yml/badge.svg)](https://github.com/ai-craftsman404/MigrateX/actions/workflows/migratex-ci.yml)
 
+MigrateX cuts migration time from SK/AutoGen to Microsoft Agent Framework with analysis, refactors, and git-native review.
+
+**Proof links:** [Release v0.1.0](https://github.com/ai-craftsman404/MigrateX/releases/tag/v0.1.0) · [Demo/CLI Usage](#usage) · [Architecture](#architecture)
+
 A semi-automated migration assistant that scans, analyses, and refactors code from Semantic Kernel and AutoGen frameworks to Microsoft Agent Framework.
 
 ## Installation
